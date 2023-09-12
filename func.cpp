@@ -15,19 +15,22 @@ using namespace std;
 
 void readFileFunc(int nameOfArray[], int arraySize) {
 	ifstream fileName;
+	//Filestream is created
 	fileName.open("numFile.txt");
-
+	//Opens the file
 	if (fileName.is_open()) {
 		while (!fileName.eof()) {
+			//Reads the file all the way to the end
 			int i = 0;
 			for (i = 0; i < arraySize; i++) {
+				//Wrties all contents of file into the array
 				fileName >> nameOfArray[i];
 			}
 		}
 	}
 }
 
-
+//Function searches array for the specified number
 void searchArray(int nameOfArray[], int arraySize) {
 	int i = 0;
 	int numToSearch = 0;
@@ -36,50 +39,64 @@ void searchArray(int nameOfArray[], int arraySize) {
 	cout << "Enter number to search --> ";
 	cin >> numToSearch;
 	cout << endl;
-
+	//Looks for number
 	for (i = 0; i < arraySize; i++) {
 		if (nameOfArray[i] == numToSearch) {
+			//Once found, number is assigned to variable and index is given
 			foundNum = nameOfArray[i];
 			cout << "Number found! Index of number is " << i << endl;
 		}
 		
 	}
+	//If not found, this prints
 	if (numToSearch != foundNum) {
 		cout << "Sorry, number was not found" << endl;
 	}
 }
 
 void modifyInts(int nameOfArray[], int arraySize) {
-	bool random = true;
+	bool randomBool = true;
 	int indexToModify = 0;
 	int oldValue = 0;
 	int newValue = 0;
+	//Do while is here so the function keeps running even if user enters something wrong
 	do {
 		try {
+			//try and catch is for error catching
 			cout << "Enter the index of the number you'd like to replace --> ";
 			cin >> indexToModify;
-
+			//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
 			if (cin.fail() || indexToModify > arraySize || indexToModify < 0) {
 				cin.clear();
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				throw 20;
 			}
 
-			random = false;
 			cout << "Enter the number you would like to replace the old one with --> ";
 			cin >> newValue;
-
+			//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				throw 20;
+			}
+			//Bool is set to false to break the do while
+			randomBool = false;
+			//Old value is saved to show user later
 			oldValue = nameOfArray[indexToModify];
 
 			nameOfArray[indexToModify] = newValue;
+			//New and old value is shown to user
 			cout << "The new value is " << nameOfArray[indexToModify] << ", the old value was " << oldValue << endl;
 			break;
 		}
+		//Catch is for catching user input errors and continuing the function
 		catch (int e) {
 			cout << "Invalid user Input" << endl;
 			continue;
 		}
-	} while (random = true);
+		break;
+	} while (randomBool != false);
 }
 //Figuring this out was a real pain in the butt. There are easier ways to do this that don't involve the use of try and catch
 void addInts(int nameOfArray[], int arraySize) {
@@ -90,13 +107,15 @@ void addInts(int nameOfArray[], int arraySize) {
 		try {
 			for (i = 0; i < arraySize; i++) {
 				if (nameOfArray[i] == 0) {
-					cout << "Enter the number you would like to add --> ";
+					cout << "Enter a number you would like to add to the array --> ";
 					cin >> numToAdd;
+					//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
 					if (cin.fail()) {
 						cin.clear();
 						cin.ignore(numeric_limits<streamsize>::max(), '\n');
-						throw 19;
+						throw 18;
 					}
+					//If user doesn't enter anything stupid, loop is killed and number is added
 					else {
 						random = false;
 						nameOfArray[i] = numToAdd;
@@ -104,12 +123,11 @@ void addInts(int nameOfArray[], int arraySize) {
 						break;
 					}
 				}
-				break;
 			}
 			break;
 		}
-
-		catch (int e) {
+		//Catch is for catching user input errors and continuing the function
+		catch (int f) {
 			cout << "Invalid user input" << endl;
 			continue;
 		}
@@ -118,9 +136,10 @@ void addInts(int nameOfArray[], int arraySize) {
 }
 
 void removeOrZero(int nameOfArray[], int arraySize) {
+	//Pretty simple, asks user for an index, and removes the number at that index
 	int i = 0; 
 	int numToReplace = 0;
-	cout << "Enter the index you would like to replace --> " << endl;
+	cout << "Enter the index of the number you would like to remove --> ";
 	cin >> numToReplace;
 
 	nameOfArray[numToReplace] = i;

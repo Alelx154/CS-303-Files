@@ -8,7 +8,7 @@
 #include <array>
 
 using namespace std;
-
+//Used to link between main and func
 void readFileFunc(int nameOfArray[], int arraySize);
 void searchArray(int nameOfArray[], int arraySize);
 void modifyInts(int nameOfArray[], int arraySize);

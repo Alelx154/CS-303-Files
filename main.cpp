@@ -10,16 +10,20 @@
 using namespace std;
 
 int main() {
+	//Array that file contents goes into
 	const int sizeOfArray = 150;
 	int intArray[sizeOfArray] = { };
+	//Function call
+	readFileFunc(intArray, sizeOfArray);
+	//Function call
+	searchArray(intArray, sizeOfArray);
 
-	//readFileFunc(intArray, sizeOfArray);
-
-	//searchArray(intArray, sizeOfArray);
-
+	//Function with try and catch implemented
 	modifyInts(intArray, sizeOfArray);
 
-	//addInts(intArray, sizeOfArray);
+	//Function with try and catch implemented
+	addInts(intArray, sizeOfArray);
 
-	//removeOrZero(intArray, sizeOfArray);
+	//Function call
+	removeOrZero(intArray, sizeOfArray);
 }
