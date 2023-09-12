@@ -45,12 +45,14 @@ void searchArray(int nameOfArray[], int arraySize) {
 			//Once found, number is assigned to variable and index is given
 			foundNum = nameOfArray[i];
 			cout << "Number found! Index of number is " << i << endl;
+			cout << endl;
 		}
 		
 	}
 	//If not found, this prints
 	if (numToSearch != foundNum) {
 		cout << "Sorry, number was not found" << endl;
+		cout << endl;
 	}
 }
 
@@ -65,6 +67,7 @@ void modifyInts(int nameOfArray[], int arraySize) {
 			//try and catch is for error catching
 			cout << "Enter the index of the number you'd like to replace --> ";
 			cin >> indexToModify;
+			cout << endl;
 			//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
 			if (cin.fail() || indexToModify > arraySize || indexToModify < 0) {
 				cin.clear();
@@ -74,6 +77,7 @@ void modifyInts(int nameOfArray[], int arraySize) {
 
 			cout << "Enter the number you would like to replace the old one with --> ";
 			cin >> newValue;
+			cout << endl;
 			//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
 			if (cin.fail()) {
 				cin.clear();
@@ -88,11 +92,13 @@ void modifyInts(int nameOfArray[], int arraySize) {
 			nameOfArray[indexToModify] = newValue;
 			//New and old value is shown to user
 			cout << "The new value is " << nameOfArray[indexToModify] << ", the old value was " << oldValue << endl;
+			cout << endl;
 			break;
 		}
 		//Catch is for catching user input errors and continuing the function
 		catch (int e) {
 			cout << "Invalid user Input" << endl;
+			cout << endl;
 			continue;
 		}
 		break;
@@ -109,6 +115,7 @@ void addInts(int nameOfArray[], int arraySize) {
 				if (nameOfArray[i] == 0) {
 					cout << "Enter a number you would like to add to the array --> ";
 					cin >> numToAdd;
+					cout << endl;
 					//if user enters a non number or an index that doesnt exist, the if loop activates and throws error to catch
 					if (cin.fail()) {
 						cin.clear();
@@ -120,6 +127,7 @@ void addInts(int nameOfArray[], int arraySize) {
 						random = false;
 						nameOfArray[i] = numToAdd;
 						cout << "Integer added!" << endl;
+						cout << endl;
 						break;
 					}
 				}
@@ -129,6 +137,7 @@ void addInts(int nameOfArray[], int arraySize) {
 		//Catch is for catching user input errors and continuing the function
 		catch (int f) {
 			cout << "Invalid user input" << endl;
+			cout << endl;
 			continue;
 		}
 
@@ -141,6 +150,9 @@ void removeOrZero(int nameOfArray[], int arraySize) {
 	int numToReplace = 0;
 	cout << "Enter the index of the number you would like to remove --> ";
 	cin >> numToReplace;
+	cout << endl;
+
+	cout << "Number has been removed!" << endl;
 
 	nameOfArray[numToReplace] = i;
 }
